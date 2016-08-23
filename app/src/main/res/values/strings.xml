@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DB</string>
+    <string name="name_hint">Enter full name of person</string>
+    <string name="age_hint">Age</string>
+    <string name="add_button_text">Add</string>
+    <string name="load_button_text">Load</string>
+    <string name="clear_button_text">Clear</string>
+    <string name="incorrect_name_toast">You have entered wrong name</string>
+    <string name="incorrect_age_toast">You have entered wrong age</string>
+    <string name="cb_cleared">Your DB was cleared. Items deleted: </string>
+    <string name="empty_db">There is nothing to load from DB</string>
+</resources>
