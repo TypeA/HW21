@@ -9,4 +9,5 @@
     <string name="incorrect_age_toast">You have entered wrong age</string>
     <string name="cb_cleared">Your DB was cleared. Items deleted: </string>
     <string name="empty_db">There is nothing to load from DB</string>
+    <string name="loaded_from_db">items loaded from DB</string>
 </resources>

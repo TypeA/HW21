@@ -33,7 +33,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(persons.get(position).getName());
         holder.surname.setText(persons.get(position).getSurname());
-        holder.age.setText(persons.get(position).getAge());
+        holder.age.setText(String.valueOf(persons.get(position).getAge()));
     }
 
     @Override

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.buttonAdd: {
                 String name = "", surname = "";
-                int age =0;
+                int age = 0;
                 String fName[] = etFullName.getText().toString().split(" ");
                 if (fName.length < 2) {
                     Toast.makeText(this, getText(R.string.incorrect_name_toast), Toast.LENGTH_SHORT).show();
@@ -79,34 +79,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     age = Integer.valueOf(etAge.getText().toString());
                 } catch (Exception e) {
-                    Toast.makeText(this,getText(R.string.incorrect_age_toast),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getText(R.string.incorrect_age_toast), Toast.LENGTH_SHORT).show();
                 }
                 if (!name.isEmpty() && !surname.isEmpty() && age != 0) {
-                    cv.put("name",name);
-                    cv.put("surname",surname);
-                    cv.put("age",age);
-                    db.insert("person",null,cv);
+                    cv.put("name", name);
+                    cv.put("surname", surname);
+                    cv.put("age", age);
+                    db.insert("person", null, cv);
                 }
                 break;
             }
             case R.id.buttonLoad: {
                 Cursor cursor = db.query("person", null, null, null, null, null, null);
-                if(cursor.moveToFirst()) {
+                if (cursor.moveToFirst()) {
+                    persons.clear();
+                    int index = 0;
                     int nameColIndex = cursor.getColumnIndex("name");
                     int surnameColIndex = cursor.getColumnIndex("surname");
                     int ageColIndex = cursor.getColumnIndex("age");
                     do {
-                        persons.add(new Person(cursor.getString(nameColIndex),cursor.getString(surnameColIndex),cursor.getInt(ageColIndex)));
+                        persons.add(new Person(cursor.getString(nameColIndex), cursor.getString(surnameColIndex), cursor.getInt(ageColIndex)));
+                        index++;
                     } while (cursor.moveToNext());
+                    Toast.makeText(this, String.valueOf(index) + " а" + getString(R.string.loaded_from_db), Toast.LENGTH_SHORT).show();
                     fillPersonsList();
                 } else {
-                    Toast.makeText(this,getText(R.string.empty_db),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getText(R.string.empty_db), Toast.LENGTH_SHORT).show();
                 }
                 break;
             }
             case R.id.buttonClear: {
                 int clearCount = db.delete("person", null, null);
-                Toast.makeText(this,getText(R.string.cb_cleared).toString()+clearCount,Toast.LENGTH_SHORT).show();
+                persons.clear();
+                fillPersonsList();
+                Toast.makeText(this, getText(R.string.cb_cleared).toString() + clearCount, Toast.LENGTH_SHORT).show();
                 break;
             }
         }
