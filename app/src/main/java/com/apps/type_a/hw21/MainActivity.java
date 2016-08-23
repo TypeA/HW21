@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         persons.add(new Person(cursor.getString(nameColIndex), cursor.getString(surnameColIndex), cursor.getInt(ageColIndex)));
                         index++;
                     } while (cursor.moveToNext());
-                    Toast.makeText(this, String.valueOf(index) + " а" + getString(R.string.loaded_from_db), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, String.valueOf(index) + " " + getString(R.string.loaded_from_db), Toast.LENGTH_SHORT).show();
                     fillPersonsList();
                 } else {
                     Toast.makeText(this, getText(R.string.empty_db), Toast.LENGTH_SHORT).show();
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int clearCount = db.delete("person", null, null);
                 persons.clear();
                 fillPersonsList();
-                Toast.makeText(this, getText(R.string.cb_cleared).toString() + clearCount, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getText(R.string.cb_cleared).toString() + " " + clearCount, Toast.LENGTH_SHORT).show();
                 break;
             }
         }
